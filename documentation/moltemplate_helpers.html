@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>moltemplate_helpers API documentation</title>
+<meta name="description" content="Various functions for building a salt in water system using moltemplate. To be later adapted into a general purpose class to allow usage of …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>moltemplate_helpers</code></h1>
+</header>
+<section id="section-intro">
+<p>Various functions for building a salt in water system using moltemplate. To be later adapted into a general purpose class to allow usage of moltemplate in python
+(similar to plumed_file class)</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;Various functions for building a salt in water system using moltemplate. To be later adapted into a general purpose class to allow usage of moltemplate in python
+(similar to plumed_file class)&#34;&#34;&#34;
+
+import subprocess
+import os
+import numpy as np
+
+def unique_enumerator(lower_bound, upper_bound, function=0, args=[], out_in=False, length=3):
+    &#34;&#34;&#34; Produces all sets of numbers between defined bounds where no two sets have identical members and runs some provided function on them.
+    
+    Parameters:
+    ---
+    **lower_bound: *int* **  
+    The integer to start counting from
+        
+    **upper_bound: *int* **  
+    The integer to count up to
+        
+    **function: *callable, optional* **  
+    The function to run on each set of numbers
+        
+    **args: *list, optional* **  
+    The arguements to provide to `function`
+        
+    **out_in: *bool, optional* **  
+    If `True`, `function` a parameter will be passed to `function` containing the output of the previous run of `function`. The first time `function` is run `None` will be passed.
+        
+    **length: *str, optional* **  
+    The size of the sets to consider
+        
+    Returns:
+    ---
+    **output: *list* **   
+    Contains the result of the final time `function` was run
+    
+    Examples
+    ---
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=2)    
+    [1, 1] [2, 1] [2, 2]
+    
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=3)
+    [1, 1, 1] [2, 1, 1] [2, 2, 1] [2, 2, 2]
+    
+    Using a user-defined function to print the sum of the set of numbers
+    
+    &gt;&gt;&gt; def print_sum(numbers):
+    &gt;&gt;&gt;     print(sum(numbers))
+
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=3, function=print_sum)
+    3 4 5 6
+    
+    Using a user defined function to compute the sums and save them this time
+    
+    &gt;&gt;&gt; def sums(numbers, old_sums):
+    &gt;&gt;&gt;     if not old_sums:
+    &gt;&gt;&gt;         old_sums = []
+    &gt;&gt;&gt;
+    &gt;&gt;&gt;     old_sums.append(sum(numbers))
+    &gt;&gt;&gt;     return old_sums
+    &gt;&gt;&gt;
+    &gt;&gt;&gt; out = unique_enumerator(1, 2, length=3, function=sums, out_in=True)
+    &gt;&gt;&gt; print(out)
+    [3, 4, 5, 6]
+    &#34;&#34;&#34;
+    
+    # Error checking
+    if lower_bound &gt; upper_bound:
+        raise Exception(&#34;Lower bound exceeds upper bound&#34;)
+    if not isinstance(lower_bound, int) or not isinstance(upper_bound, int):
+        raise Exception(&#34;Lower and upper bound must be integers&#34;)
+        
+    # Initialising
+    current_index = [lower_bound]*length
+    upper_shape = [upper_bound]*length
+    if not function:
+        function = print # This should be set as default value for function but is done in this way to accomadate pdoc documentation generator
+    
+    # Running function on index
+    if args and out_in:
+        output = function(current_index, None, *args)
+    elif args:
+        output = function(current_index, *args)
+    elif out_in:
+        output = function(current_index, None)
+    else:
+        output = function(current_index)
+        
+    # Starting to iterate
+    while current_index != upper_shape: # End condition
+        i = 0
+        current_index[i] += 1
+        while current_index[i] &gt; upper_bound: # Overflow loop
+            i += 1
+            current_index[i] += 1
+        for j in range(i): # Resetting other indices corrects to produce unique results
+            current_index[j] = current_index[i]
+           
+        # Running function on index again
+        if args and out_in:
+            output = function(current_index, output, *args)
+        elif args:
+            output = function(current_index, *args)
+        elif out_in:
+            output = function(current_index, output)
+        else:
+            output = function(current_index)
+            
+    return output
+
+def cubicity(triplet):
+    &#34;&#34;&#34;Measures how &#39;cubic&#39; a triplet of numbers is by checking how similar they are to one another by
+    computing the sum of their distances from their average
+    
+    Parameters:
+    ---
+    **triplet: *list* **  
+    A list containing three integers
+        
+    Returns:
+    ---
+    **output: *float* **   
+    A measure of how &#39;cubic&#39; the triplet is.
+    
+    Notes:
+    ---
+    The results of this function dont have much significance alone, instead use it when comparing triplets.
+    &#34;&#34;&#34;
+    
+    
+    output = abs(sum(triplet)/3 - triplet[0]) \
+    + abs(sum(triplet)/3 - triplet[2]) + abs(sum(triplet)/3 - triplet[2])
+    return output
+
+def err(factors, best_combos, number):
+    &#34;&#34;&#34;Computes the difference between a number and a product of numbers and saves the result if the difference is smaller than a provided threshold.
+    
+    This function compares the difference (error) between the product of `factors` and `number` to the difference between the product of some factors stored in `best_combos` and `numbers`. If `factors` has a smaller difference it is saved into `best_combos` along with the difference. If the difference is equal, then it is appended to `best_combos` along with its error.
+    
+    Parameters:
+    ---
+    **factors: *list* **  
+    A list of three integers
+    
+    **best_combos: *list* **  
+    A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.
+    
+    **number: *int* **  
+    An integer which is used for computing the errors.
+        
+    Returns:
+    ---
+    **best_combos: *list* **  
+    A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.
+    
+    &#34;&#34;&#34;
+
+    error = abs(number - factors[0]*factors[1]*factors[2]) # Local error
+    if best_combos:
+        min_error = best_combos[0][1]
+
+        if error &gt; min_error: # This catches 99% of cases
+            pass
+        elif error &lt; min_error:
+            # Replacing with better factors
+            best_combos = [[list(factors), error]] 
+        elif error == min_error:
+            # All factors with equal error are saved
+            best_combos.append([list(factors), error]) 
+    
+    else:
+        best_combos = [[list(factors), error]] 
+        
+    return best_combos
+
+def decompose(number):
+    &#34;&#34;&#34;Computes a triplet of numbers whose product approximates the number provided and where no number in the triplet is 3 times greater than another.
+    
+    Parameters:
+    ---
+    **number: *int* **  
+    The number to approximate
+        
+    Returns:
+    ---
+    **best_combo: *list* **   
+    The first element of this list is a list of three numbers. The second is error of the approximation.
+    
+    Notes:
+    ---
+    The problem this function addresses is how to build a cube with an arbritrary integer volume using integer side lengths. This is useful for creating a box of molecules, since the total number of molecules and the number of molecules along each axis must be an integer. However it is impossible to do this exactly unless the desired volume is a cubic number e.g. 9,27,64, etc. In the end, the more the cube is deformed into a cuboid the better the volume can be approximated, up to the extreme limit of using a cuboid with sides V*1*1 to create any volume V.
+    
+    Currently the function allows the side lengths to vary between 0.5*root to 1.7*root where root is the cube root of the volume. This choice balances approximation error and computational  time whithout distorting the cube too much but can be changed if desired. Allowing the sides to vary too much can drastically increase computational time. Computational time also increases drsatically as the volume increases, currently volumes up to 10 million can be approximated in a few seconds. Also for small volumes (&lt;1000) a different set of side length conditions are used to increase accuracy (root +- 5).
+    &#34;&#34;&#34;
+    
+    # Setting the limits for the side lengths
+    root = round(number**(1/3))
+    if root &lt;= 5: 
+        lower = 0
+    else:
+        lower = min(round(root*0.5), root-5)
+    upper = max(round(root*1.7), root+5)
+    
+    # With the lower and upper search bounds set, it is time to generate the triplets
+    # and check their errors
+    all_combos = unique_enumerator(lower, upper, function=err, args=[number], out_in=True)
+    
+    # In the case with multiple possible triplets, the ones which are the most &#39;cubic&#39; are chosen (see cubicity)
+    best_combo = all_combos[0]
+    best_cub = cubicity(best_combo[0])
+    for combo in all_combos:
+        if cubicity(combo[0]) &lt; best_cub:
+            best_cub = cubicity(combo[0])
+            best_combo = combo
+            
+    # Returns a list containing the triplet (in a list) and their error
+    return best_combo
+
+
+def modify_build(num_water, num_salt, grid=0, salt_trans=0, salt_sep=0, error=0, filename=&#39;system.lt&#39;):
+    &#34;&#34;&#34;Writes a moltemplate file which can be used to build the system with the desired amount of water and salt
+    
+    Parameters:
+    ---
+    **num_water: *int* **  
+    The number of water molecules the system will have
+    
+    **num_salt: *int* **  
+    The number of salt molecules the system will have
+    
+    **grid: *float, optional* **  
+    The side length of the simulation box. Function will attempt to use a reasonable value if not specified
+    
+    **salt_trans: *float, optional* **  
+    How much to translate the salt molecules upon creation (so that they dont overlap with the water). Only required if the default values produces problems
+    
+    **salt_sep: *float, optional* **  
+    How far apart to space the salt molecules. If not specified they will have the same spacing as the water molecules
+    
+    **error: *bool, optional* **  
+    Prints out the build error when True (since the built system doesnt always have exactly the amount of water and salt specified)
+    
+    **filename: *str, optional* **  
+    The name of the file to write out to
+        
+    Returns:
+    ---
+    **[num_water, num_salt]: *list* **   
+    The number of water molecules and salt molecules the completed system will contain.
+    
+    Notes:
+    ---
+    The code is incapable of creating an exact amount of water and salt, rather is will attempt to approximate the values provided. For very small numbers (&lt;11) it is exact.
+    
+    
+    &#34;&#34;&#34;
+    
+    # This part approximates the amount of water/salt desired with roughly cubic integers
+    water_factors, water_error = decompose(num_water)
+    salt_factors, salt_error = decompose(num_salt)
+    num_water = np.prod(water_factors)
+    num_salt = np.prod(salt_factors)
+    if error:
+        print(&#34;Build error of {} molecules&#34;.format(water_error + salt_error))
+    
+    # Setting grid size if not specified using an arbitrary reciprocal density (easier to work with)
+    if not grid:
+        density = 25 # Cubic Angstroms per Water Molecule
+        volume = density*num_water
+        grid = round(volume**(1/3), 2)
+       
+    # Setting the spacings so that the water/salt lattice spans the box 
+    water_spacing, salt_spacing = [], []
+    for i in range(3):
+        water_spacing.append(round(grid/water_factors[i], 2))
+        salt_spacing.append(round(grid/salt_factors[i], 2))
+    
+    if not salt_trans: # Setting salt translation to avoid overlap with water, may require tinkering
+        salt_trans = water_spacing[0]/2
+        
+    if salt_sep: # Setting how far apart Na and Cl will be
+        salt_sep = round(salt_sep/np.sqrt(3), 2)
+    if not salt_sep:
+        salt_sep = water_spacing[0]
+    
+        
+    na_move = round(salt_trans, 2)
+    cl_move = round(salt_trans + salt_sep, 2)
+    
+    # Creating lines for writing into build file
+    
+    grid_lines = [f&#34;0 {grid} xlo xhi\n&#34;]
+    grid_lines.append(f&#34;0 {grid} ylo yhi\n&#34;)
+    grid_lines.append(f&#34;0 {grid} zlo zhi\n&#34;)
+    
+    wat_lines = [f&#34;[{water_factors[0]}].move(0.00, 0.00, {water_spacing[0]})\n&#34;]
+    wat_lines.append(f&#34;[{water_factors[1]}].move(0.00, {water_spacing[1]}, 0.01)\n&#34;)
+    wat_lines.append(f&#34;[{water_factors[2]}].move({water_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    na_lines = [f&#34;[{salt_factors[0]}].move(0.00, 0.00, {salt_spacing[0]})\n&#34;]
+    na_lines.append(f&#34;[{salt_factors[1]}].move(0.00, {salt_spacing[1]}, 0.01)\n&#34;)
+    na_lines.append(f&#34;[{salt_factors[2]}].move({salt_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    cl_lines = [f&#34;[{salt_factors[0]}].move(0.00, 0.00, {salt_spacing[0]})\n&#34;]
+    cl_lines.append(f&#34;[{salt_factors[1]}].move(0.00, {salt_spacing[1]}, 0.01)\n&#34;)
+    cl_lines.append(f&#34;[{salt_factors[2]}].move({salt_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    # Writing into build file
+    
+    with open(filename, &#34;r&#34;) as file:
+        data = file.readlines()
+        
+    for i in range(len(data)):
+        line = data[i]
+        if &#34;write_once&#34; in line:
+            for j in range(1,4):
+                data[i+j] = grid_lines[j-1]
+
+        if &#34;new SPCE&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = wat_lines[j-1]
+
+        if &#34;new NaIon&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = na_lines[j-1]
+
+        if &#34;new ClIon&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = cl_lines[j-1]
+
+        if &#34;na[*]&#34; in line:
+            data[i] = f&#34;na[*][*][*].move({na_move},{na_move},{na_move})\n&#34;
+            data[i+1] = f&#34;cl[*][*][*].move({cl_move},{cl_move},{cl_move})\n&#34;
+                
+    with open(filename, &#34;w&#34;) as file:
+        file.writelines(data)
+        
+    return [num_water, num_salt]
+        
+
+    
+    
+def build_system(filename=&#34;system.lt&#34;):
+    &#34;&#34;&#34;Simple function to run a moltemplate script and delete all outputs except the lammps data file
+    
+    Parameters:
+    ---
+    **filename: *str, optional* **  
+    The name of the moltemplate file
+    
+    &#34;&#34;&#34;
+    
+    
+    root = filename[:-3]
+    bashCommand = f&#34;moltemplate.sh {filename}&#34;
+    normal = subprocess.run(bashCommand.split(),
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        check=True,
+        text=True)
+
+    print(normal.stdout)
+
+    os.remove(f&#34;{root}.in.init&#34;)
+    os.remove(f&#34;{root}.in.settings&#34;)
+    os.remove(f&#34;{root}.in&#34;)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="moltemplate_helpers.build_system"><code class="name flex">
+<span>def <span class="ident">build_system</span></span>(<span>filename='system.lt')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Simple function to run a moltemplate script and delete all outputs except the lammps data file</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>filename: <em>str, optional</em> </strong><br>
+The name of the moltemplate file</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_system(filename=&#34;system.lt&#34;):
+    &#34;&#34;&#34;Simple function to run a moltemplate script and delete all outputs except the lammps data file
+    
+    Parameters:
+    ---
+    **filename: *str, optional* **  
+    The name of the moltemplate file
+    
+    &#34;&#34;&#34;
+    
+    
+    root = filename[:-3]
+    bashCommand = f&#34;moltemplate.sh {filename}&#34;
+    normal = subprocess.run(bashCommand.split(),
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        check=True,
+        text=True)
+
+    print(normal.stdout)
+
+    os.remove(f&#34;{root}.in.init&#34;)
+    os.remove(f&#34;{root}.in.settings&#34;)
+    os.remove(f&#34;{root}.in&#34;)</code></pre>
+</details>
+</dd>
+<dt id="moltemplate_helpers.cubicity"><code class="name flex">
+<span>def <span class="ident">cubicity</span></span>(<span>triplet)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Measures how 'cubic' a triplet of numbers is by checking how similar they are to one another by
+computing the sum of their distances from their average</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>triplet: <em>list</em> </strong><br>
+A list containing three integers</p>
+<h2 id="returns">Returns:</h2>
+<p><strong>output: <em>float</em> </strong> <br>
+A measure of how 'cubic' the triplet is.</p>
+<h2 id="notes">Notes:</h2>
+<p>The results of this function dont have much significance alone, instead use it when comparing triplets.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def cubicity(triplet):
+    &#34;&#34;&#34;Measures how &#39;cubic&#39; a triplet of numbers is by checking how similar they are to one another by
+    computing the sum of their distances from their average
+    
+    Parameters:
+    ---
+    **triplet: *list* **  
+    A list containing three integers
+        
+    Returns:
+    ---
+    **output: *float* **   
+    A measure of how &#39;cubic&#39; the triplet is.
+    
+    Notes:
+    ---
+    The results of this function dont have much significance alone, instead use it when comparing triplets.
+    &#34;&#34;&#34;
+    
+    
+    output = abs(sum(triplet)/3 - triplet[0]) \
+    + abs(sum(triplet)/3 - triplet[2]) + abs(sum(triplet)/3 - triplet[2])
+    return output</code></pre>
+</details>
+</dd>
+<dt id="moltemplate_helpers.decompose"><code class="name flex">
+<span>def <span class="ident">decompose</span></span>(<span>number)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Computes a triplet of numbers whose product approximates the number provided and where no number in the triplet is 3 times greater than another.</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>number: <em>int</em> </strong><br>
+The number to approximate</p>
+<h2 id="returns">Returns:</h2>
+<p><strong>best_combo: <em>list</em> </strong> <br>
+The first element of this list is a list of three numbers. The second is error of the approximation.</p>
+<h2 id="notes">Notes:</h2>
+<p>The problem this function addresses is how to build a cube with an arbritrary integer volume using integer side lengths. This is useful for creating a box of molecules, since the total number of molecules and the number of molecules along each axis must be an integer. However it is impossible to do this exactly unless the desired volume is a cubic number e.g. 9,27,64, etc. In the end, the more the cube is deformed into a cuboid the better the volume can be approximated, up to the extreme limit of using a cuboid with sides V<em>1</em>1 to create any volume V.</p>
+<p>Currently the function allows the side lengths to vary between 0.5<em>root to 1.7</em>root where root is the cube root of the volume. This choice balances approximation error and computational
+time whithout distorting the cube too much but can be changed if desired. Allowing the sides to vary too much can drastically increase computational time. Computational time also increases drsatically as the volume increases, currently volumes up to 10 million can be approximated in a few seconds. Also for small volumes (&lt;1000) a different set of side length conditions are used to increase accuracy (root +- 5).</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decompose(number):
+    &#34;&#34;&#34;Computes a triplet of numbers whose product approximates the number provided and where no number in the triplet is 3 times greater than another.
+    
+    Parameters:
+    ---
+    **number: *int* **  
+    The number to approximate
+        
+    Returns:
+    ---
+    **best_combo: *list* **   
+    The first element of this list is a list of three numbers. The second is error of the approximation.
+    
+    Notes:
+    ---
+    The problem this function addresses is how to build a cube with an arbritrary integer volume using integer side lengths. This is useful for creating a box of molecules, since the total number of molecules and the number of molecules along each axis must be an integer. However it is impossible to do this exactly unless the desired volume is a cubic number e.g. 9,27,64, etc. In the end, the more the cube is deformed into a cuboid the better the volume can be approximated, up to the extreme limit of using a cuboid with sides V*1*1 to create any volume V.
+    
+    Currently the function allows the side lengths to vary between 0.5*root to 1.7*root where root is the cube root of the volume. This choice balances approximation error and computational  time whithout distorting the cube too much but can be changed if desired. Allowing the sides to vary too much can drastically increase computational time. Computational time also increases drsatically as the volume increases, currently volumes up to 10 million can be approximated in a few seconds. Also for small volumes (&lt;1000) a different set of side length conditions are used to increase accuracy (root +- 5).
+    &#34;&#34;&#34;
+    
+    # Setting the limits for the side lengths
+    root = round(number**(1/3))
+    if root &lt;= 5: 
+        lower = 0
+    else:
+        lower = min(round(root*0.5), root-5)
+    upper = max(round(root*1.7), root+5)
+    
+    # With the lower and upper search bounds set, it is time to generate the triplets
+    # and check their errors
+    all_combos = unique_enumerator(lower, upper, function=err, args=[number], out_in=True)
+    
+    # In the case with multiple possible triplets, the ones which are the most &#39;cubic&#39; are chosen (see cubicity)
+    best_combo = all_combos[0]
+    best_cub = cubicity(best_combo[0])
+    for combo in all_combos:
+        if cubicity(combo[0]) &lt; best_cub:
+            best_cub = cubicity(combo[0])
+            best_combo = combo
+            
+    # Returns a list containing the triplet (in a list) and their error
+    return best_combo</code></pre>
+</details>
+</dd>
+<dt id="moltemplate_helpers.err"><code class="name flex">
+<span>def <span class="ident">err</span></span>(<span>factors, best_combos, number)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Computes the difference between a number and a product of numbers and saves the result if the difference is smaller than a provided threshold.</p>
+<p>This function compares the difference (error) between the product of <code>factors</code> and <code>number</code> to the difference between the product of some factors stored in <code>best_combos</code> and <code>numbers</code>. If <code>factors</code> has a smaller difference it is saved into <code>best_combos</code> along with the difference. If the difference is equal, then it is appended to <code>best_combos</code> along with its error.</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>factors: <em>list</em> </strong><br>
+A list of three integers</p>
+<p><strong>best_combos: <em>list</em> </strong><br>
+A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.</p>
+<p><strong>number: <em>int</em> </strong><br>
+An integer which is used for computing the errors.</p>
+<h2 id="returns">Returns:</h2>
+<p><strong>best_combos: <em>list</em> </strong><br>
+A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def err(factors, best_combos, number):
+    &#34;&#34;&#34;Computes the difference between a number and a product of numbers and saves the result if the difference is smaller than a provided threshold.
+    
+    This function compares the difference (error) between the product of `factors` and `number` to the difference between the product of some factors stored in `best_combos` and `numbers`. If `factors` has a smaller difference it is saved into `best_combos` along with the difference. If the difference is equal, then it is appended to `best_combos` along with its error.
+    
+    Parameters:
+    ---
+    **factors: *list* **  
+    A list of three integers
+    
+    **best_combos: *list* **  
+    A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.
+    
+    **number: *int* **  
+    An integer which is used for computing the errors.
+        
+    Returns:
+    ---
+    **best_combos: *list* **  
+    A list of lists. Each element is a list with two elements. The first element is a list of three integers, the second is an error.
+    
+    &#34;&#34;&#34;
+
+    error = abs(number - factors[0]*factors[1]*factors[2]) # Local error
+    if best_combos:
+        min_error = best_combos[0][1]
+
+        if error &gt; min_error: # This catches 99% of cases
+            pass
+        elif error &lt; min_error:
+            # Replacing with better factors
+            best_combos = [[list(factors), error]] 
+        elif error == min_error:
+            # All factors with equal error are saved
+            best_combos.append([list(factors), error]) 
+    
+    else:
+        best_combos = [[list(factors), error]] 
+        
+    return best_combos</code></pre>
+</details>
+</dd>
+<dt id="moltemplate_helpers.modify_build"><code class="name flex">
+<span>def <span class="ident">modify_build</span></span>(<span>num_water, num_salt, grid=0, salt_trans=0, salt_sep=0, error=0, filename='system.lt')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Writes a moltemplate file which can be used to build the system with the desired amount of water and salt</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>num_water: <em>int</em> </strong><br>
+The number of water molecules the system will have</p>
+<p><strong>num_salt: <em>int</em> </strong><br>
+The number of salt molecules the system will have</p>
+<p><strong>grid: <em>float, optional</em> </strong><br>
+The side length of the simulation box. Function will attempt to use a reasonable value if not specified</p>
+<p><strong>salt_trans: <em>float, optional</em> </strong><br>
+How much to translate the salt molecules upon creation (so that they dont overlap with the water). Only required if the default values produces problems</p>
+<p><strong>salt_sep: <em>float, optional</em> </strong><br>
+How far apart to space the salt molecules. If not specified they will have the same spacing as the water molecules</p>
+<p><strong>error: <em>bool, optional</em> </strong><br>
+Prints out the build error when True (since the built system doesnt always have exactly the amount of water and salt specified)</p>
+<p><strong>filename: <em>str, optional</em> </strong><br>
+The name of the file to write out to</p>
+<h2 id="returns">Returns:</h2>
+<p><strong>[num_water, num_salt]: <em>list</em> </strong> <br>
+The number of water molecules and salt molecules the completed system will contain.</p>
+<h2 id="notes">Notes:</h2>
+<p>The code is incapable of creating an exact amount of water and salt, rather is will attempt to approximate the values provided. For very small numbers (&lt;11) it is exact.</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def modify_build(num_water, num_salt, grid=0, salt_trans=0, salt_sep=0, error=0, filename=&#39;system.lt&#39;):
+    &#34;&#34;&#34;Writes a moltemplate file which can be used to build the system with the desired amount of water and salt
+    
+    Parameters:
+    ---
+    **num_water: *int* **  
+    The number of water molecules the system will have
+    
+    **num_salt: *int* **  
+    The number of salt molecules the system will have
+    
+    **grid: *float, optional* **  
+    The side length of the simulation box. Function will attempt to use a reasonable value if not specified
+    
+    **salt_trans: *float, optional* **  
+    How much to translate the salt molecules upon creation (so that they dont overlap with the water). Only required if the default values produces problems
+    
+    **salt_sep: *float, optional* **  
+    How far apart to space the salt molecules. If not specified they will have the same spacing as the water molecules
+    
+    **error: *bool, optional* **  
+    Prints out the build error when True (since the built system doesnt always have exactly the amount of water and salt specified)
+    
+    **filename: *str, optional* **  
+    The name of the file to write out to
+        
+    Returns:
+    ---
+    **[num_water, num_salt]: *list* **   
+    The number of water molecules and salt molecules the completed system will contain.
+    
+    Notes:
+    ---
+    The code is incapable of creating an exact amount of water and salt, rather is will attempt to approximate the values provided. For very small numbers (&lt;11) it is exact.
+    
+    
+    &#34;&#34;&#34;
+    
+    # This part approximates the amount of water/salt desired with roughly cubic integers
+    water_factors, water_error = decompose(num_water)
+    salt_factors, salt_error = decompose(num_salt)
+    num_water = np.prod(water_factors)
+    num_salt = np.prod(salt_factors)
+    if error:
+        print(&#34;Build error of {} molecules&#34;.format(water_error + salt_error))
+    
+    # Setting grid size if not specified using an arbitrary reciprocal density (easier to work with)
+    if not grid:
+        density = 25 # Cubic Angstroms per Water Molecule
+        volume = density*num_water
+        grid = round(volume**(1/3), 2)
+       
+    # Setting the spacings so that the water/salt lattice spans the box 
+    water_spacing, salt_spacing = [], []
+    for i in range(3):
+        water_spacing.append(round(grid/water_factors[i], 2))
+        salt_spacing.append(round(grid/salt_factors[i], 2))
+    
+    if not salt_trans: # Setting salt translation to avoid overlap with water, may require tinkering
+        salt_trans = water_spacing[0]/2
+        
+    if salt_sep: # Setting how far apart Na and Cl will be
+        salt_sep = round(salt_sep/np.sqrt(3), 2)
+    if not salt_sep:
+        salt_sep = water_spacing[0]
+    
+        
+    na_move = round(salt_trans, 2)
+    cl_move = round(salt_trans + salt_sep, 2)
+    
+    # Creating lines for writing into build file
+    
+    grid_lines = [f&#34;0 {grid} xlo xhi\n&#34;]
+    grid_lines.append(f&#34;0 {grid} ylo yhi\n&#34;)
+    grid_lines.append(f&#34;0 {grid} zlo zhi\n&#34;)
+    
+    wat_lines = [f&#34;[{water_factors[0]}].move(0.00, 0.00, {water_spacing[0]})\n&#34;]
+    wat_lines.append(f&#34;[{water_factors[1]}].move(0.00, {water_spacing[1]}, 0.01)\n&#34;)
+    wat_lines.append(f&#34;[{water_factors[2]}].move({water_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    na_lines = [f&#34;[{salt_factors[0]}].move(0.00, 0.00, {salt_spacing[0]})\n&#34;]
+    na_lines.append(f&#34;[{salt_factors[1]}].move(0.00, {salt_spacing[1]}, 0.01)\n&#34;)
+    na_lines.append(f&#34;[{salt_factors[2]}].move({salt_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    cl_lines = [f&#34;[{salt_factors[0]}].move(0.00, 0.00, {salt_spacing[0]})\n&#34;]
+    cl_lines.append(f&#34;[{salt_factors[1]}].move(0.00, {salt_spacing[1]}, 0.01)\n&#34;)
+    cl_lines.append(f&#34;[{salt_factors[2]}].move({salt_spacing[2]}, 0.01, 0.01)\n&#34;)
+    
+    # Writing into build file
+    
+    with open(filename, &#34;r&#34;) as file:
+        data = file.readlines()
+        
+    for i in range(len(data)):
+        line = data[i]
+        if &#34;write_once&#34; in line:
+            for j in range(1,4):
+                data[i+j] = grid_lines[j-1]
+
+        if &#34;new SPCE&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = wat_lines[j-1]
+
+        if &#34;new NaIon&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = na_lines[j-1]
+
+        if &#34;new ClIon&#34; in line:
+            for j in range(1, 4):
+                data[i+j] = cl_lines[j-1]
+
+        if &#34;na[*]&#34; in line:
+            data[i] = f&#34;na[*][*][*].move({na_move},{na_move},{na_move})\n&#34;
+            data[i+1] = f&#34;cl[*][*][*].move({cl_move},{cl_move},{cl_move})\n&#34;
+                
+    with open(filename, &#34;w&#34;) as file:
+        file.writelines(data)
+        
+    return [num_water, num_salt]</code></pre>
+</details>
+</dd>
+<dt id="moltemplate_helpers.unique_enumerator"><code class="name flex">
+<span>def <span class="ident">unique_enumerator</span></span>(<span>lower_bound, upper_bound, function=0, args=[], out_in=False, length=3)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Produces all sets of numbers between defined bounds where no two sets have identical members and runs some provided function on them.</p>
+<h2 id="parameters">Parameters:</h2>
+<p><strong>lower_bound: <em>int</em> </strong><br>
+The integer to start counting from</p>
+<p><strong>upper_bound: <em>int</em> </strong><br>
+The integer to count up to</p>
+<p><strong>function: <em>callable, optional</em> </strong><br>
+The function to run on each set of numbers</p>
+<p><strong>args: <em>list, optional</em> </strong><br>
+The arguements to provide to <code>function</code></p>
+<p><strong>out_in: <em>bool, optional</em> </strong><br>
+If <code>True</code>, <code>function</code> a parameter will be passed to <code>function</code> containing the output of the previous run of <code>function</code>. The first time <code>function</code> is run <code>None</code> will be passed.</p>
+<p><strong>length: <em>str, optional</em> </strong><br>
+The size of the sets to consider</p>
+<h2 id="returns">Returns:</h2>
+<p><strong>output: <em>list</em> </strong> <br>
+Contains the result of the final time <code>function</code> was run</p>
+<h2 id="examples">Examples</h2>
+<pre><code>&gt;&gt;&gt; unique_enumerator(1, 2, length=2)    
+[1, 1] [2, 1] [2, 2]
+
+&gt;&gt;&gt; unique_enumerator(1, 2, length=3)
+[1, 1, 1] [2, 1, 1] [2, 2, 1] [2, 2, 2]
+</code></pre>
+<p>Using a user-defined function to print the sum of the set of numbers</p>
+<pre><code>&gt;&gt;&gt; def print_sum(numbers):
+&gt;&gt;&gt;     print(sum(numbers))
+
+&gt;&gt;&gt; unique_enumerator(1, 2, length=3, function=print_sum)
+3 4 5 6
+</code></pre>
+<p>Using a user defined function to compute the sums and save them this time</p>
+<pre><code>&gt;&gt;&gt; def sums(numbers, old_sums):
+&gt;&gt;&gt;     if not old_sums:
+&gt;&gt;&gt;         old_sums = []
+&gt;&gt;&gt;
+&gt;&gt;&gt;     old_sums.append(sum(numbers))
+&gt;&gt;&gt;     return old_sums
+&gt;&gt;&gt;
+&gt;&gt;&gt; out = unique_enumerator(1, 2, length=3, function=sums, out_in=True)
+&gt;&gt;&gt; print(out)
+[3, 4, 5, 6]
+</code></pre></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def unique_enumerator(lower_bound, upper_bound, function=0, args=[], out_in=False, length=3):
+    &#34;&#34;&#34; Produces all sets of numbers between defined bounds where no two sets have identical members and runs some provided function on them.
+    
+    Parameters:
+    ---
+    **lower_bound: *int* **  
+    The integer to start counting from
+        
+    **upper_bound: *int* **  
+    The integer to count up to
+        
+    **function: *callable, optional* **  
+    The function to run on each set of numbers
+        
+    **args: *list, optional* **  
+    The arguements to provide to `function`
+        
+    **out_in: *bool, optional* **  
+    If `True`, `function` a parameter will be passed to `function` containing the output of the previous run of `function`. The first time `function` is run `None` will be passed.
+        
+    **length: *str, optional* **  
+    The size of the sets to consider
+        
+    Returns:
+    ---
+    **output: *list* **   
+    Contains the result of the final time `function` was run
+    
+    Examples
+    ---
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=2)    
+    [1, 1] [2, 1] [2, 2]
+    
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=3)
+    [1, 1, 1] [2, 1, 1] [2, 2, 1] [2, 2, 2]
+    
+    Using a user-defined function to print the sum of the set of numbers
+    
+    &gt;&gt;&gt; def print_sum(numbers):
+    &gt;&gt;&gt;     print(sum(numbers))
+
+    &gt;&gt;&gt; unique_enumerator(1, 2, length=3, function=print_sum)
+    3 4 5 6
+    
+    Using a user defined function to compute the sums and save them this time
+    
+    &gt;&gt;&gt; def sums(numbers, old_sums):
+    &gt;&gt;&gt;     if not old_sums:
+    &gt;&gt;&gt;         old_sums = []
+    &gt;&gt;&gt;
+    &gt;&gt;&gt;     old_sums.append(sum(numbers))
+    &gt;&gt;&gt;     return old_sums
+    &gt;&gt;&gt;
+    &gt;&gt;&gt; out = unique_enumerator(1, 2, length=3, function=sums, out_in=True)
+    &gt;&gt;&gt; print(out)
+    [3, 4, 5, 6]
+    &#34;&#34;&#34;
+    
+    # Error checking
+    if lower_bound &gt; upper_bound:
+        raise Exception(&#34;Lower bound exceeds upper bound&#34;)
+    if not isinstance(lower_bound, int) or not isinstance(upper_bound, int):
+        raise Exception(&#34;Lower and upper bound must be integers&#34;)
+        
+    # Initialising
+    current_index = [lower_bound]*length
+    upper_shape = [upper_bound]*length
+    if not function:
+        function = print # This should be set as default value for function but is done in this way to accomadate pdoc documentation generator
+    
+    # Running function on index
+    if args and out_in:
+        output = function(current_index, None, *args)
+    elif args:
+        output = function(current_index, *args)
+    elif out_in:
+        output = function(current_index, None)
+    else:
+        output = function(current_index)
+        
+    # Starting to iterate
+    while current_index != upper_shape: # End condition
+        i = 0
+        current_index[i] += 1
+        while current_index[i] &gt; upper_bound: # Overflow loop
+            i += 1
+            current_index[i] += 1
+        for j in range(i): # Resetting other indices corrects to produce unique results
+            current_index[j] = current_index[i]
+           
+        # Running function on index again
+        if args and out_in:
+            output = function(current_index, output, *args)
+        elif args:
+            output = function(current_index, *args)
+        elif out_in:
+            output = function(current_index, output)
+        else:
+            output = function(current_index)
+            
+    return output</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="two-column">
+<li><code><a title="moltemplate_helpers.build_system" href="#moltemplate_helpers.build_system">build_system</a></code></li>
+<li><code><a title="moltemplate_helpers.cubicity" href="#moltemplate_helpers.cubicity">cubicity</a></code></li>
+<li><code><a title="moltemplate_helpers.decompose" href="#moltemplate_helpers.decompose">decompose</a></code></li>
+<li><code><a title="moltemplate_helpers.err" href="#moltemplate_helpers.err">err</a></code></li>
+<li><code><a title="moltemplate_helpers.modify_build" href="#moltemplate_helpers.modify_build">modify_build</a></code></li>
+<li><code><a title="moltemplate_helpers.unique_enumerator" href="#moltemplate_helpers.unique_enumerator">unique_enumerator</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
